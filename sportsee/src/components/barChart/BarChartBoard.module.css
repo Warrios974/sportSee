@@ -1,0 +1,57 @@
+@value colors: '../../utils/style/colors.module.css';
+@value color--primary, color--white, color--box, color--legend, color--black from colors;
+
+.barChartBoardContainer{
+    width: 100%;
+    height: 100%;
+    background-color: color--box;
+    padding: 2rem 0;
+}
+
+.TooltipBarChart{
+    background-color: color--primary;
+    padding: 1rem;
+}
+
+.TooltipBarChart > p{        
+    color: color--white;
+}
+
+.legendBarChart{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 2rem;
+    color: color--legend;
+}
+
+.legendBarChart > li:first-of-type{
+    flex: 2;
+    font-weight: 500;
+    color: color--black;
+}
+
+.legendBarChart > li{
+    display: flex;
+    align-items: center;
+}
+
+.legendBarChart > :not(li:first-of-type){
+    margin-left: 1rem;
+}
+
+.legendBarChart > :not(li:first-of-type) > i{
+    display: block;
+    width: 10px;
+    height: 10px;
+    margin: 0 1rem;
+    border-radius: 50%;
+}
+
+.colorPrimary{
+    background-color: color--primary;
+}
+
+.colorBlack{
+    background-color: color--black;
+}

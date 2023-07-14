@@ -1,0 +1,11 @@
+.mainContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.pageContainer{
+    margin-left: 120px;
+    padding: 3rem 6rem;
+    width: 100%;
+}

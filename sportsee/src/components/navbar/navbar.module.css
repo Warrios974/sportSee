@@ -1,0 +1,16 @@
+@value colors: '../../utils/style/colors.module.css';
+@value color--black, color--white from colors;
+
+.nav{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.navItems{
+    background-color: color--white;
+    padding: 1rem;
+    border-radius: .6rem;
+}

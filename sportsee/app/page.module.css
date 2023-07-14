@@ -1,0 +1,6 @@
+@value colors: '../src/utils/style/colors.module.css';
+@value color--black, color--white from colors;
+
+.container{
+    
+}

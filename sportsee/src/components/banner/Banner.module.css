@@ -1,0 +1,14 @@
+@value colors: '../../utils/style/colors.module.css';
+@value color--primary from colors;
+
+.mainContainer{
+
+}
+
+.title{
+    
+}
+
+.title > span{
+    color: color--primary;
+}

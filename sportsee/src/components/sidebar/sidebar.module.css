@@ -1,0 +1,29 @@
+@value colors: '../../utils/style/colors.module.css';
+@value color--black, color--white from colors;
+
+@value sizesFont: '../../utils/style/sizesFont.module.css';
+@value size--legend from sizesFont;
+
+.sidebarContainer{
+    background-color: color--black;
+    color: color--white;
+    position: fixed;
+    top: 5rem;
+    left: 0;
+    height: 100%;
+    width: 120px;
+    overflow-x: hidden;
+    gap: 5rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.copyRight{
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    font-size: size--legend;
+}

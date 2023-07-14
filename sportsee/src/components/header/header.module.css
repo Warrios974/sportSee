@@ -1,0 +1,17 @@
+@value colors: '../../utils/style/colors.module.css';
+@value color--black, color--white from colors;
+
+.headerContainer{
+    z-index: 1000;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: color--black;
+    color: color--white;
+    padding: 1rem 1.5rem;
+}
+
+.logo{
+    
+}

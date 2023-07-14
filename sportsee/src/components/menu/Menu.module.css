@@ -1,0 +1,16 @@
+@value colors: '../../utils/style/colors.module.css';
+@value color--black, color--white from colors;
+
+.menuContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4;
+    width: 70%;
+}
+
+.menuItem{
+    padding: .5rem 1rem;
+    font-weight: 600;
+}

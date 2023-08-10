@@ -1,14 +1,23 @@
 @value colors: '../../utils/style/colors.module.css';
 @value color--primary from colors;
 
-.mainContainer{
+@value sizeFont: '../../utils/style/sizesFont.module.css';
+@value size--title, size--paragraphe from sizeFont;
 
+.mainContainer{
+    width: 100%;
 }
 
 .title{
-    
+    font-size: size--title;
+    font-weight: 600;
+    margin: 1rem 0;
 }
 
 .title > span{
     color: color--primary;
+}
+
+.description{
+    font-size: size--paragraphe;
 }

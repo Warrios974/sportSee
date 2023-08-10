@@ -1,21 +1,27 @@
 'use client'
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import style from './BarChartBoard.module.css'
+import { getUserActivity } from '@/src/api/api';
 import DataTransfromChart from '@/src/utils/models/DataTransfromChart';
-import { USER_ACTIVITY } from '@/src/data/data';
 
 
 export default function BarChartBoard(props : any) {
 
-  const { user } = props
+  const { userID } = props
 
-  const userActivity = USER_ACTIVITY.find(element => element.userId === user.id)
+  const [chartData, setChartData] = useState([])
   
-  const data = new DataTransfromChart(userActivity);
-
-  const newData = data.barChart
+  useEffect(() => {
+    const getUserdata = async () => {
+      const userData = await getUserActivity(userID)
+      const dataTransfromChart = new DataTransfromChart(userData)
+      const data = dataTransfromChart.barChart
+      setChartData(data)
+    }
+    getUserdata()
+  }, [])
 
   const CustomTooltip = ({ payload, active } : any) => {
     if(active){
@@ -56,16 +62,17 @@ export default function BarChartBoard(props : any) {
           <BarChart
             width={500}
             height={300}
-            data={newData}
+            data={chartData}
             margin={{
               top: 50,
               right: 0,
               left: 0,
               bottom: 5,
             }}
+            barCategoryGap={15}
           >
-            <XAxis dataKey="day" fill='#DEDEDE' tickMargin={20}/>
-            <YAxis yAxisId="right" orientation="right" stroke="#74798C" axisLine={false} tickLine={false} tickMargin={10}/>
+            <XAxis dataKey="day" fill='#DEDEDE' tickMargin={20} tickLine={false} padding={{left:10, right:10}}/>
+            <YAxis yAxisId="right" orientation="right" stroke="#74798C" axisLine={false} tickLine={false} tickMargin={10} domain={["dataMin - 2", "dataMax + 2"]}/>
             <YAxis yAxisId="left" orientation="left" tick={<></>} axisLine={false} tickLine={false}/>
             <Tooltip content={<CustomTooltip />}/>
             <Legend width={200} content={<CustomLegend />} wrapperStyle={{top: 0, lineHeight: "20px", width: "100%"}}/>

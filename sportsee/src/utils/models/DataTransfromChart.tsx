@@ -37,6 +37,7 @@ export default class DataTransfromChart{
             number += 1
             
             if(session.hasOwnProperty('kilogram') && session.hasOwnProperty('calories')){
+                // @ts-ignore
                 newSessions.push({
                     day: number.toString(),
                     // @ts-ignore
@@ -54,6 +55,16 @@ export default class DataTransfromChart{
 
         let newSessions: activitySessions = []
 
+        const firstSession = {
+            day: '',
+            sessionLength: this._sessions?.[0].sessionLength,
+        }
+
+        const lastSession = {
+            day: '',
+            sessionLength: this._sessions?.[6].sessionLength,
+        }
+
         let week = ['L', 'M', 'M', 'J', 'V', 'S', 'D']
 
         this._sessions?.forEach((session, index) => {
@@ -66,6 +77,9 @@ export default class DataTransfromChart{
                 })
             }
         });
+
+        newSessions.unshift(firstSession)
+        newSessions.push(lastSession)
 
         return newSessions
     }
@@ -81,6 +95,7 @@ export default class DataTransfromChart{
             
             // @ts-ignore
             newSessions.push({
+                // @ts-ignore
                   subject: kind[index + 1],
                   A: session.value,
                   fullMark: 300,
@@ -100,7 +115,7 @@ export default class DataTransfromChart{
               name: 'todayScore',
               uv: pourcentage,
               pv: 2400,
-              fill: '#8884d8',
+              fill: '#E60000',
             }
         ]
 

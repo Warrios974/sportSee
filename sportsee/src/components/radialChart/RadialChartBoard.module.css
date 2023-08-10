@@ -1,10 +1,10 @@
 @value colors: '../../utils/style/colors.module.css';
-@value color--black from colors;
+@value color--box from colors;
 
 .radialChartBoardContainer{
     width: 33%;
-    height: 100%;
     border-radius: .5rem;
-    background-color: color--black;
+    background-color: color--box;
     height: 17rem;
+    padding-top: 2rem;
 }

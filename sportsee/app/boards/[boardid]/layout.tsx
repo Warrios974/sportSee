@@ -8,8 +8,8 @@ type LayoutBoardProps = PropsWithChildren<{
 export default function LayoutBoard( {params, children} : LayoutBoardProps) {
   
   return (
-    <div>
+    <>
       {children}
-    </div>
+    </>
   )
 }

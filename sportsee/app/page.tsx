@@ -3,7 +3,6 @@ import style from './page.module.css'
 import Banner from '@/src/components/banner/Banner'
 import { USER_MAIN_DATA as users } from '../src/data/data'
 import Link from 'next/link'
-Link
 
 export default function Home() {
 

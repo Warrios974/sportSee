@@ -1,11 +1,16 @@
 @value colors: '../../utils/style/colors.module.css';
 @value color--primary, color--white, color--box, color--legend, color--black from colors;
 
+@value sizeFont: '../../utils/style/sizesFont.module.css';
+@value size--legend, size--sub-sub-title from sizeFont;
+
 .barChartBoardContainer{
+    height: 22rem;
     width: 100%;
     height: 100%;
     background-color: color--box;
     padding: 2rem 0;
+    border-radius: .5rem;
 }
 
 .TooltipBarChart{
@@ -25,15 +30,19 @@
     color: color--legend;
 }
 
+.legendBarChart > li{
+    display: flex;
+    font-weight: 500;
+    align-items: center;
+    color: color--legend;
+    font-size: size--legend;
+}
+
 .legendBarChart > li:first-of-type{
     flex: 2;
     font-weight: 500;
     color: color--black;
-}
-
-.legendBarChart > li{
-    display: flex;
-    align-items: center;
+    font-size: size--sub-sub-title;
 }
 
 .legendBarChart > :not(li:first-of-type){

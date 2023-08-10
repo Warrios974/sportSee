@@ -1,64 +1,95 @@
 'use client'
 
+import { getUserMainData } from '@/src/api/api';
 import { USER_MAIN_DATA } from '@/src/data/data';
 import DataTransfromChart from '@/src/utils/models/DataTransfromChart';
-import React from 'react'
-import { RadialBarChart, RadialBar, Legend, ResponsiveContainer, PolarAngleAxis } from 'recharts';
+import React, { useEffect, useState } from 'react'
+import { RadialBarChart, RadialBar, Legend, ResponsiveContainer, PolarAngleAxis, PolarRadiusAxis, Label } from 'recharts';
+import style from './RadialChartBoard.module.css'
 
-export default function RadialChartBoard(props) {
+export default function RadialChartBoard(props :any) {
 
-    const { user } = props
+    const { userID } = props
 
-    const userActivity = USER_MAIN_DATA.find(element => element.id === user.id)
+    const [chartData, setChartData] = useState([])
     
-    const radialChartData = new DataTransfromChart(userActivity);
+    useEffect(() =>{
+      const getUserdata = async () => {
+        const userData = await getUserMainData(userID)
+        const dataTransfromChart = new DataTransfromChart(userData)
+        const data = dataTransfromChart.radialChart
+        setChartData(data)
+      }
+      getUserdata()
+    }, [])
 
-    const data = radialChartData.radialChart
-      
-    const style = {
-      top: '50%',
-      right: 0,
-      transform: 'translate(0, -50%)',
-      lineHeight: '24px',
-    };
-
-    const circleSize = 100;
+    const custumLabel = ({ value , x, y, width } : any) => {
+      return(
+        <text
+          font-size="26px"
+          font-weight="bold"
+          text-anchor="middle"
+          x={x}
+          y={y}
+        >
+          <tspan>100%</tspan>
+          <tspan>de ton objectif</tspan>
+        </text>
+      )
+    }
       
     return (
-    <ResponsiveContainer width="33%" height="100%">
-        <RadialBarChart
-          width={200} 
-          height={200}
-          innerRadius={12}
-          outerRadius={18}
-          barSize={5}
-          data={data}
-          startAngle={90}
-          endAngle={-270}
-          barGap={50}
+      <div className={style.radialChartBoardContainer}>
+        <ResponsiveContainer width="99%" height="100%" aspect={0.972}>
+          <RadialBarChart
+            innerRadius="69%"
+            barGap={0}
+            barCategoryGap={-2}
+            maxBarSize={15}
+            data={chartData}
+            startAngle={90}
+            endAngle={450}
           >
-          <PolarAngleAxis
-          type="number"
-          domain={[0, 100]}
-          angleAxisId={0}
-          tick={false}
-          />
-          <RadialBar
-          background
-          dataKey="value"
-          cornerRadius={circleSize / 2}
-          fill="#82ca9d"
-          />
-          <text
-            x={circleSize / 2}
-            y={circleSize / 2}
-            textAnchor="middle"
-            dominantBaseline="middle"
-            className="progress-label"
-          >
-          25
-          </text>
-        </RadialBarChart>
-      </ResponsiveContainer>
+            <PolarAngleAxis type="number" domain={[0, 100]} angleAxisId={0} tick=""/>
+            <PolarRadiusAxis tick="" tickLine="" hide={true} fill="" stroke="">
+              <Label
+                value={`${chartData[0]?.uv}%`}
+                position="center"
+                textAnchor="center"
+                fill="var(--graphic-black-color)"
+                fontSize="26px"
+                fontWeight="bold"
+                dy={-20}
+              />
+              <Label
+                value={'de votre'}
+                position="center"
+                textAnchor="center"
+                fill="#74798C"
+                fontSize="15px"
+                fontWeight="500"
+                dy={10}
+              />
+              <Label
+                value={'objectif'}
+                position="center"
+                textAnchor="center"
+                fill="#74798C"
+                fontSize="15px"
+                fontWeight="500"
+                dy={30}
+              />
+            </PolarRadiusAxis>
+            <RadialBar
+              background="white"
+              fill="#E60000"
+              color=""
+              dataKey="uv"
+              cornerRadius="50%"
+            />
+            <Legend width={200} content={<text>Score</text>} wrapperStyle={{top: "0rem", left: "2rem", lineHeight: "20px", width: "150px",fontWeight: "bold"}}/>
+          </RadialBarChart>
+        </ResponsiveContainer>
+      </div>
   )
 }

@@ -12,6 +12,36 @@ import { USER_MAIN_DATA } from '@/src/data/data'
 import { getUserMainData } from '@/src/api/api'
 import SingleValueContainer from '@/src/components/singleValueContainer/SingleValueContainer'
 
+type dataType = {
+  id: number,
+  userInfos: {
+      firstName: string,
+      lastName: string,
+      age: number,
+  },
+  todayScore: number,
+  keyData: {
+      calorieCount: number,
+      proteinCount: number,
+      carbohydrateCount: number,
+      lipidCount: number
+  }
+} | {
+  id: number,
+  userInfos: {
+      firstName: string,
+      lastName: string,
+      age: number,
+  },
+  score: number,
+  keyData: {
+      calorieCount: number,
+      proteinCount: number,
+      carbohydrateCount: number,
+      lipidCount: number
+  }
+}
+
 type BoardPageProps = PropsWithChildren<{
   params: { boardid: string, }
   userId: number,
@@ -22,7 +52,7 @@ export default function BoardPage({ params }: BoardPageProps) {
 
   const userID = Number(params.boardid)
   
-  const [userData, setUserData] = useState([])
+  const [userData, setUserData] = useState<dataType>()
 
   useEffect(() => {
     const getUserdata = async () => {
@@ -32,9 +62,9 @@ export default function BoardPage({ params }: BoardPageProps) {
     getUserdata()
   }, [])
 
-  const keyData = userData.keyData
+  const keyData = userData?.keyData
 
-  if(userData.length !== 0) return (
+  if(userData && keyData) return (
     <div className={style.page}>
         <Banner 
           name={userData?.userInfos.firstName}

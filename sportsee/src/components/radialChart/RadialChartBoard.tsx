@@ -4,14 +4,19 @@ import { getUserMainData } from '@/src/api/api';
 import { USER_MAIN_DATA } from '@/src/data/data';
 import DataTransfromChart from '@/src/utils/models/DataTransfromChart';
 import React, { useEffect, useState } from 'react'
-import { RadialBarChart, RadialBar, Legend, ResponsiveContainer, PolarAngleAxis, PolarRadiusAxis, Label } from 'recharts';
+import { RadialBarChart, RadialBar, Legend, ResponsiveContainer, PolarAngleAxis, PolarRadiusAxis, Label, LabelProps } from 'recharts';
 import style from './RadialChartBoard.module.css'
+import { RadialChartType } from '@/src/utils/models/DataTransfromChart';
 
-export default function RadialChartBoard(props :any) {
+type RadialChartBoardProps = {
+  userID: number
+}
+
+export default function RadialChartBoard(props :RadialChartBoardProps) {
 
     const { userID } = props
 
-    const [chartData, setChartData] = useState([])
+    const [chartData, setChartData] = useState<RadialChartType>([])
     
     useEffect(() =>{
       const getUserdata = async () => {
@@ -23,7 +28,7 @@ export default function RadialChartBoard(props :any) {
       getUserdata()
     }, [])
 
-    const custumLabel = ({ value , x, y, width } : any) => {
+    const custumLabel = ({ value , x, y, width } : LabelProps) => {
       return(
         <text
           font-size="26px"
@@ -50,8 +55,8 @@ export default function RadialChartBoard(props :any) {
             startAngle={90}
             endAngle={450}
           >
-            <PolarAngleAxis type="number" domain={[0, 100]} angleAxisId={0} tick=""/>
-            <PolarRadiusAxis tick="" tickLine="" hide={true} fill="" stroke="">
+            <PolarAngleAxis type="number" domain={[0, 100]} angleAxisId={0} tick={false}/>
+            <PolarRadiusAxis tick={false} tickLine={false} hide={true} fill="" stroke="">
               <Label
                 value={`${chartData[0]?.uv}%`}
                 position="center"
@@ -81,7 +86,7 @@ export default function RadialChartBoard(props :any) {
               />
             </PolarRadiusAxis>
             <RadialBar
-              background="white"
+              background={{ fill: 'white' }}
               fill="#E60000"
               color=""
               dataKey="uv"

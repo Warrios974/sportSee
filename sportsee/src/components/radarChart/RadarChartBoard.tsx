@@ -5,12 +5,17 @@ import DataTransfromChart from '@/src/utils/models/DataTransfromChart';
 import React, { useEffect, useState } from 'react'
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
 import style from './RadarChartBoard.module.css'
+import { RadarChartType } from '@/src/utils/models/DataTransfromChart';
 
-export default function RadarChartBoard(props: any) {
+type RadarChartBoardProps = {
+  userID: number
+}
+
+export default function RadarChartBoard(props: RadarChartBoardProps) {
 
     const { userID } = props
 
-    const [chartData, setChartData] = useState([])
+    const [chartData, setChartData] = useState<RadarChartType>([])
     
     useEffect(() =>{
       const getUserdata = async () => {

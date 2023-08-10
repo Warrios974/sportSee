@@ -6,12 +6,17 @@ import style from './LineChartBoard.module.css'
 import DataTransfromChart from '@/src/utils/models/DataTransfromChart';
 import { USER_AVERAGE_SESSIONS } from '@/src/data/data';
 import { getUserAverageSessions } from '@/src/api/api';
+import { LineChartType } from '@/src/utils/models/DataTransfromChart';
 
-export default function LineChartBoard(props : any) {
+type LineChartBoardProps = {
+  userID: number
+}
+
+export default function LineChartBoard(props : LineChartBoardProps) {
 
   const { userID } = props
 
-  const [chartData, setChartData] = useState([])
+  const [chartData, setChartData] = useState<LineChartType>([])
   const [currentIndexLineChart, setCurrentIndexLineChart] = useState(5)
   
   useEffect(() =>{

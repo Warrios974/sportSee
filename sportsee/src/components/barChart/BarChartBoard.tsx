@@ -1,17 +1,22 @@
 'use client'
 
 import React, { useEffect, useState } from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,TooltipProps, LegendProps } from 'recharts';
+import { ValueType, NameType } from 'recharts/types/component/DefaultTooltipContent';
 import style from './BarChartBoard.module.css'
 import { getUserActivity } from '@/src/api/api';
 import DataTransfromChart from '@/src/utils/models/DataTransfromChart';
+import { BarChartType } from '@/src/utils/models/DataTransfromChart';
 
+type BarChartBoardProps = {
+  userID: number
+}
 
-export default function BarChartBoard(props : any) {
+export default function BarChartBoard(props: BarChartBoardProps) {
 
   const { userID } = props
 
-  const [chartData, setChartData] = useState([])
+  const [chartData, setChartData] = useState<BarChartType>([])
   
   useEffect(() => {
     const getUserdata = async () => {
@@ -23,8 +28,8 @@ export default function BarChartBoard(props : any) {
     getUserdata()
   }, [])
 
-  const CustomTooltip = ({ payload, active } : any) => {
-    if(active){
+  const CustomTooltip = ({ payload, active }: TooltipProps<ValueType, NameType>) => {
+    if (active && payload && payload.length > 0) {
       return(
       <div className={style.TooltipBarChart}>
         <p>{`${payload[0].value}`} kg</p>
@@ -34,14 +39,14 @@ export default function BarChartBoard(props : any) {
     }
   }
 
-  const CustomLegend = ({ payload } : any) => {
+  const CustomLegend = ({ payload }: LegendProps) => {
     return(
       <ul className={style.legendBarChart}>
         <li>
           <span>Activité quotidienne</span>
         </li>
         {
-          payload.map((item, index) => (
+          payload && payload.map((item, index) => (
             item.value === 'kilogram' ? 
               <li key={index}>
                 <i className={style.colorBlack}></i> Poids (kg)
@@ -74,7 +79,7 @@ export default function BarChartBoard(props : any) {
             <XAxis dataKey="day" fill='#DEDEDE' tickMargin={20} tickLine={false} padding={{left:10, right:10}}/>
             <YAxis yAxisId="right" orientation="right" stroke="#74798C" axisLine={false} tickLine={false} tickMargin={10} domain={["dataMin - 2", "dataMax + 2"]}/>
             <YAxis yAxisId="left" orientation="left" tick={<></>} axisLine={false} tickLine={false}/>
-            <Tooltip content={<CustomTooltip />}/>
+            <Tooltip content={<CustomTooltip />} useTranslate3d/>
             <Legend width={200} content={<CustomLegend />} wrapperStyle={{top: 0, lineHeight: "20px", width: "100%"}}/>
             <Bar yAxisId="right" dataKey="kilogram" fill="#282D30" maxBarSize={10} radius={[20, 20, 0, 0]} />
             <Bar yAxisId="left" dataKey="calories" fill="#E60000" maxBarSize={10} radius={[20, 20, 0, 0]} />

@@ -10,13 +10,19 @@ import { ChartsBoardProps } from '@/src/utils/models/Types';
 
 export default function RadialChartBoard(props :ChartsBoardProps) {
 
-    const { userID } = props
+    const { userID, setFetchError } = props
 
     const [chartData, setChartData] = useState<RadialChartType>([])
     
     useEffect(() =>{
       const getUserdata = async () => {
         const userData = await getUserMainData(userID)
+      
+        if (userData && 'erreur' in userData){
+          console.log("Fetch error detected");
+          setFetchError(true)
+        }
+        
         const dataTransfromChart = new DataTransfromChart(userData)
         const data = dataTransfromChart.radialChart
         setChartData(data)

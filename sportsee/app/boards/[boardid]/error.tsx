@@ -1,6 +1,7 @@
 'use client' // Error components must be Client Components
  
 import { useEffect } from 'react'
+import style from './page.module.css'
  
 export default function Error({
   error,
@@ -16,14 +17,16 @@ export default function Error({
  
   return (
     <div>
-      <h2>Something went wrong in board !</h2>
+      <h2>Nous avons rencontré un probleme lors du chargement de vos données</h2>
       <button
+        className={style.btn_error}
         onClick={
           // Attempt to recover by trying to re-render the segment
           () => reset()
         }
       >
-        Try again
+        Actualiser
+        <span className={style.btn__bg}></span>
       </button>
     </div>
   )

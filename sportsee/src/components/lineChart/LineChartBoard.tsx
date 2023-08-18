@@ -12,7 +12,7 @@ import { ChartsBoardProps } from '@/src/utils/models/Types';
 
 export default function LineChartBoard(props : ChartsBoardProps) {
 
-  const { userID } = props
+  const { userID,setFetchError } = props
 
   const [chartData, setChartData] = useState<LineChartType>([])
   const [currentIndexLineChart, setCurrentIndexLineChart] = useState(5)
@@ -20,6 +20,12 @@ export default function LineChartBoard(props : ChartsBoardProps) {
   useEffect(() =>{
     const getUserdata = async () => {
       const userData = await getUserAverageSessions(userID)
+      
+      if (userData && 'erreur' in userData){
+        console.log("Fetch error detected");
+        setFetchError(true)
+      }
+      
       const dataTransfromChart = new DataTransfromChart(userData)
       const data = dataTransfromChart.lineChart
       setChartData(data)

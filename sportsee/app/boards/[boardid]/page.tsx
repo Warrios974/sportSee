@@ -17,14 +17,31 @@ export default function BoardPage({ params }: BoardPageProps) {
   const userID = Number(params.boardid)
   
   const [userData, setUserData] = useState<UserDataReceiveFromFetch>()
+  const [fetchError, setFetchError] = useState<boolean>(false)
 
   useEffect(() => {
     const getUserdata = async () => {
       const userData = await getUserMainData(userID)
+      console.log("Fetched userData:", userData);
+      
+      if (userData && 'erreur' in userData){
+        console.log("Fetch error detected");
+        setFetchError(true)
+      }
+
       setUserData(userData)
     }
     getUserdata()
   }, [])
+
+  useEffect(() => {
+    const setError = () => {
+      if (fetchError) {
+        throw new Error('Connection à la base de données impossible')
+      }
+    }
+    setError()
+  }, [fetchError])
 
   const keyData = userData?.keyData
 
@@ -38,14 +55,18 @@ export default function BoardPage({ params }: BoardPageProps) {
           <div className={style.charts}>
             <BarChartBoard 
               userID={userID}
+              setFetchError={setFetchError}
               />
             <div>
               <LineChartBoard 
-                userID={userID}/>
+                userID={userID}
+                setFetchError={setFetchError}/>
               <RadarChartBoard 
-                userID={userID}/>
+                userID={userID}
+                setFetchError={setFetchError}/>
               <RadialChartBoard
-                userID={userID}/>
+                userID={userID}
+                setFetchError={setFetchError}/>
             </div>
           </div>
           <div className={style.sidebar}>

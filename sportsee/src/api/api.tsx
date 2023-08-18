@@ -20,7 +20,9 @@ export const getUserActivity = async (userID : number) => {
             data = response.data
         })
         .catch((error) => {
-            throw new Error(error);
+            data = {
+                erreur: 'Connection à la base de données impossible',
+            }
         })
 
     }
@@ -44,7 +46,9 @@ export const getUserAverageSessions = async (userID : number) => {
             data = response.data
         })
         .catch((error) => {
-            throw new Error(error);
+            data = {
+                erreur: 'Connection à la base de données impossible',
+            }
         })
 
     }
@@ -68,7 +72,9 @@ export const getUserPerformance = async (userID : number) => {
             data = response.data
         })
         .catch((error) => {
-            throw new Error(error);
+            data = {
+                erreur: 'Connection à la base de données impossible',
+            }
         })
 
     }
@@ -92,7 +98,9 @@ export const getUserMainData = async (userID : number) => {
             data = response.data
         })
         .catch((error) => {
-            throw new Error(error);
+            data = {
+                erreur: 'Connection à la base de données impossible',
+            }
         })
 
     }

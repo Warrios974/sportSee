@@ -1,6 +1,6 @@
 /* Components Props Types */
 
-import { PropsWithChildren } from "react"
+import { Dispatch, PropsWithChildren, SetStateAction } from "react"
 
 
 export type BannerProps = {
@@ -9,7 +9,8 @@ export type BannerProps = {
 }
 
 export type ChartsBoardProps = {
-    userID: number
+    userID: number ,
+    setFetchError: Dispatch<SetStateAction<boolean>>
 }
   
 export type BoardPageProps = PropsWithChildren<{
@@ -25,6 +26,7 @@ export type LayoutBoardProps = PropsWithChildren<{
 /*Utils Charts Data Types */
 
 export type UserDataReceiveFromFetch = { 
+    erreur?: string,
     id?:number,
     userId?: number,
     score?: number,

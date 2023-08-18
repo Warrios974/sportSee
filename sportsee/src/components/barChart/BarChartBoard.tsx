@@ -11,13 +11,19 @@ import { ChartsBoardProps } from '@/src/utils/models/Types';
 
 export default function BarChartBoard(props: ChartsBoardProps) {
 
-  const { userID } = props
+  const { userID, setFetchError } = props
 
   const [chartData, setChartData] = useState<BarChartType>([])
   
   useEffect(() => {
     const getUserdata = async () => {
       const userData = await getUserActivity(userID)
+      
+      if (userData && 'erreur' in userData){
+        console.log("Fetch error detected");
+        setFetchError(true)
+      }
+      
       const dataTransfromChart = new DataTransfromChart(userData)
       const data = dataTransfromChart.barChart
       setChartData(data)

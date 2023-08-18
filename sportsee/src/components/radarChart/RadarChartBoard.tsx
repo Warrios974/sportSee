@@ -10,13 +10,19 @@ import { ChartsBoardProps } from '@/src/utils/models/Types';
 
 export default function RadarChartBoard(props: ChartsBoardProps) {
 
-    const { userID } = props
+    const { userID,setFetchError } = props
 
     const [chartData, setChartData] = useState<RadarChartType>([])
     
     useEffect(() =>{
       const getUserdata = async () => {
         const userData = await getUserPerformance(userID)
+      
+        if (userData && 'erreur' in userData){
+          console.log("Fetch error detected");
+          setFetchError(true)
+        }
+        
         const dataTransfromChart = new DataTransfromChart(userData)
         const data = dataTransfromChart.radarChart
         setChartData(data)

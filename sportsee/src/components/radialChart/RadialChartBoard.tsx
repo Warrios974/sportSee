@@ -7,12 +7,9 @@ import React, { useEffect, useState } from 'react'
 import { RadialBarChart, RadialBar, Legend, ResponsiveContainer, PolarAngleAxis, PolarRadiusAxis, Label, LabelProps } from 'recharts';
 import style from './RadialChartBoard.module.css'
 import { RadialChartType } from '@/src/utils/models/DataTransfromChart';
+import { ChartsBoardProps } from '@/src/utils/models/Types';
 
-type RadialChartBoardProps = {
-  userID: number
-}
-
-export default function RadialChartBoard(props :RadialChartBoardProps) {
+export default function RadialChartBoard(props :ChartsBoardProps) {
 
     const { userID } = props
 

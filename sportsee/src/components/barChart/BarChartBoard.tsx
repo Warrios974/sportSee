@@ -7,12 +7,9 @@ import style from './BarChartBoard.module.css'
 import { getUserActivity } from '@/src/api/api';
 import DataTransfromChart from '@/src/utils/models/DataTransfromChart';
 import { BarChartType } from '@/src/utils/models/DataTransfromChart';
+import { ChartsBoardProps } from '@/src/utils/models/Types';
 
-type BarChartBoardProps = {
-  userID: number
-}
-
-export default function BarChartBoard(props: BarChartBoardProps) {
+export default function BarChartBoard(props: ChartsBoardProps) {
 
   const { userID } = props
 

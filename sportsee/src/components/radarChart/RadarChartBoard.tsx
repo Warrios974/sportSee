@@ -6,12 +6,9 @@ import React, { useEffect, useState } from 'react'
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
 import style from './RadarChartBoard.module.css'
 import { RadarChartType } from '@/src/utils/models/DataTransfromChart';
+import { ChartsBoardProps } from '@/src/utils/models/Types';
 
-type RadarChartBoardProps = {
-  userID: number
-}
-
-export default function RadarChartBoard(props: RadarChartBoardProps) {
+export default function RadarChartBoard(props: ChartsBoardProps) {
 
     const { userID } = props
 

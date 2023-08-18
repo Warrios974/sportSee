@@ -1,21 +1,4 @@
-export type datatype = { 
-    id?:number,
-    userId?: number,
-    score?: number,
-    todayScore?: number,
-    sessions?: { day: string | number; kilogram: number; calories: number; }[] | { day: string | number, sessionLength: number }[]
-    kind?: { 1: string, 2: string, 3: string, 4: string, 5: string, 6: string},
-    data?: { value: number, kind: number }[],
-}
-
-export type BarChartType = { day:  string | number, kilogram: number, calories: number, }[]
-export type LineChartType = { day:  string | number, sessionLength: number;}[]
-export type RadarChartType = { subject: string; A: number, fullMark: number; }[]
-export type RadialChartType = { name: string, uv: number, pv: number, fill: string }[]
-
-type sessions = BarChartType | LineChartType | undefined
-type kind = undefined | { 1: string, 2: string, 3: string, 4: string, 5: string, 6: string}
-type dataSession = undefined | { value: number, kind: number }[]
+import { BarChartType, LineChartType, RadarChartType, RadialChartType, dataSession, receiveDataFromfetch, kind, sessions } from "./Types"
 
 export default class DataTransfromChart{
     _sessions: sessions
@@ -23,7 +6,7 @@ export default class DataTransfromChart{
     _data: dataSession
     _score: number | undefined
 
-    constructor(data?: datatype){
+    constructor(data?: receiveDataFromfetch){
         this._sessions = data?.sessions || undefined
         this._kind = data?.kind || undefined
         this._data = data?.data || undefined

@@ -1,18 +1,16 @@
 'use client'
 
 import React, { useEffect, useState } from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ReferenceArea } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, ReferenceArea, TooltipProps } from 'recharts';
+import { ValueType, NameType } from 'recharts/types/component/DefaultTooltipContent';
 import style from './LineChartBoard.module.css'
 import DataTransfromChart from '@/src/utils/models/DataTransfromChart';
-import { USER_AVERAGE_SESSIONS } from '@/src/data/data';
 import { getUserAverageSessions } from '@/src/api/api';
 import { LineChartType } from '@/src/utils/models/DataTransfromChart';
+import { ChartsBoardProps } from '@/src/utils/models/Types';
 
-type LineChartBoardProps = {
-  userID: number
-}
 
-export default function LineChartBoard(props : LineChartBoardProps) {
+export default function LineChartBoard(props : ChartsBoardProps) {
 
   const { userID } = props
 
@@ -29,20 +27,10 @@ export default function LineChartBoard(props : LineChartBoardProps) {
     getUserdata()
   }, [])
 
-  const CustomTooltip = ({ payload, active } : any) => {
-    if(active){
+  const CustomTooltip = ({ payload, active } : TooltipProps<ValueType, NameType>) => {
+    if (active && payload && payload.length > 0) {
       return(
       <div style={{background: "white", padding: ".5rem"}}>
-        <p>{`${payload[0].value}`} min</p>
-      </div>
-      )
-    }
-  }
-
-  const CustomTooltip2 = ({ payload, active } : any) => {
-    if(active){
-      return(
-      <div style={{background: "white", padding: ".5rem", height: "100%", width: "100%"}}>
         <p>{`${payload[0].value}`} min</p>
       </div>
       )
@@ -80,7 +68,7 @@ export default function LineChartBoard(props : LineChartBoardProps) {
             x2={8} 
             y1={-70} 
             y2={200} 
-            fill='#000000A1' 
+            fill='#0000004c' 
             strokeOpacity={0.2} 
             ifOverflow='visible'
             style={{ margin: -20}}

@@ -27,21 +27,6 @@ export default function RadialChartBoard(props :RadialChartBoardProps) {
       }
       getUserdata()
     }, [])
-
-    const custumLabel = ({ value , x, y, width } : LabelProps) => {
-      return(
-        <text
-          font-size="26px"
-          font-weight="bold"
-          text-anchor="middle"
-          x={x}
-          y={y}
-        >
-          <tspan>100%</tspan>
-          <tspan>de ton objectif</tspan>
-        </text>
-      )
-    }
       
     return (
       <div className={style.radialChartBoardContainer}>

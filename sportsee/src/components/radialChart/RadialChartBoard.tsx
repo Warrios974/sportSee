@@ -6,7 +6,7 @@ import DataTransfromChart from '@/src/utils/models/DataTransfromChart';
 import React, { useEffect, useState } from 'react'
 import { RadialBarChart, RadialBar, Legend, ResponsiveContainer, PolarAngleAxis, PolarRadiusAxis, Label, LabelProps } from 'recharts';
 import style from './RadialChartBoard.module.css'
-import { RadialChartType } from '@/src/utils/models/DataTransfromChart';
+import { RadialChartType } from '@/src/utils/models/Types';
 import { ChartsBoardProps } from '@/src/utils/models/Types';
 
 export default function RadialChartBoard(props :ChartsBoardProps) {

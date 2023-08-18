@@ -6,7 +6,7 @@ import { ValueType, NameType } from 'recharts/types/component/DefaultTooltipCont
 import style from './BarChartBoard.module.css'
 import { getUserActivity } from '@/src/api/api';
 import DataTransfromChart from '@/src/utils/models/DataTransfromChart';
-import { BarChartType } from '@/src/utils/models/DataTransfromChart';
+import { BarChartType } from '@/src/utils/models/Types';
 import { ChartsBoardProps } from '@/src/utils/models/Types';
 
 export default function BarChartBoard(props: ChartsBoardProps) {

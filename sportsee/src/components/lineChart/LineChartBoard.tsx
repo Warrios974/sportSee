@@ -6,7 +6,7 @@ import { ValueType, NameType } from 'recharts/types/component/DefaultTooltipCont
 import style from './LineChartBoard.module.css'
 import DataTransfromChart from '@/src/utils/models/DataTransfromChart';
 import { getUserAverageSessions } from '@/src/api/api';
-import { LineChartType } from '@/src/utils/models/DataTransfromChart';
+import { LineChartType } from '@/src/utils/models/Types';
 import { ChartsBoardProps } from '@/src/utils/models/Types';
 
 

@@ -2,6 +2,7 @@
 
 import { PropsWithChildren } from "react"
 
+
 export type BannerProps = {
     name: string | undefined,
     description: string
@@ -15,6 +16,10 @@ export type BoardPageProps = PropsWithChildren<{
   params: { boardid: string, }
   userId: number,
   user: Object
+}>
+
+export type LayoutBoardProps = PropsWithChildren<{
+  params: { boardid: string, }
 }>
 
 /*Utils Charts Data Types */

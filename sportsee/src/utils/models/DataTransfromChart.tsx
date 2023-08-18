@@ -1,4 +1,4 @@
-import { BarChartType, LineChartType, RadarChartType, RadialChartType, dataSession, receiveDataFromfetch, kind, sessions } from "./Types"
+import { BarChartType, LineChartType, RadarChartType, RadialChartType, dataSession, UserDataReceiveFromFetch, kind, sessions } from "./Types"
 
 export default class DataTransfromChart{
     _sessions: sessions
@@ -6,7 +6,7 @@ export default class DataTransfromChart{
     _data: dataSession
     _score: number | undefined
 
-    constructor(data?: receiveDataFromfetch){
+    constructor(data?: UserDataReceiveFromFetch){
         this._sessions = data?.sessions || undefined
         this._kind = data?.kind || undefined
         this._data = data?.data || undefined

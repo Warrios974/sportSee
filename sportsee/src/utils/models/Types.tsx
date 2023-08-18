@@ -1,5 +1,7 @@
 /* Components Props Types */
 
+import { PropsWithChildren } from "react"
+
 export type BannerProps = {
     name: string | undefined,
     description: string
@@ -8,13 +10,30 @@ export type BannerProps = {
 export type ChartsBoardProps = {
     userID: number
 }
+  
+export type BoardPageProps = PropsWithChildren<{
+  params: { boardid: string, }
+  userId: number,
+  user: Object
+}>
 
 /*Utils Charts Data Types */
 
-export type receiveDataFromfetch = { 
+export type UserDataReceiveFromFetch = { 
     id?:number,
     userId?: number,
     score?: number,
+    userInfos?: {
+        firstName: string,
+        lastName: string,
+        age: number,
+    },
+    keyData?: {
+        calorieCount: number,
+        proteinCount: number,
+        carbohydrateCount: number,
+        lipidCount: number
+    }
     todayScore?: number,
     sessions?: { day: string | number; kilogram: number; calories: number; }[] | { day: string | number, sessionLength: number }[]
     kind?: { 1: string, 2: string, 3: string, 4: string, 5: string, 6: string},

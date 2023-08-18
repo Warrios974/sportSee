@@ -1,10 +1,9 @@
 'use client'
 
 import { getUserMainData } from '@/src/api/api';
-import { USER_MAIN_DATA } from '@/src/data/data';
 import DataTransfromChart from '@/src/utils/models/DataTransfromChart';
 import React, { useEffect, useState } from 'react'
-import { RadialBarChart, RadialBar, Legend, ResponsiveContainer, PolarAngleAxis, PolarRadiusAxis, Label, LabelProps } from 'recharts';
+import { RadialBarChart, RadialBar, Legend, ResponsiveContainer, PolarAngleAxis, PolarRadiusAxis, Label } from 'recharts';
 import style from './RadialChartBoard.module.css'
 import { RadialChartType } from '@/src/utils/models/Types';
 import { ChartsBoardProps } from '@/src/utils/models/Types';

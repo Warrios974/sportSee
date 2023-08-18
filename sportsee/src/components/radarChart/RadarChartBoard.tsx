@@ -3,7 +3,7 @@
 import { getUserPerformance } from '@/src/api/api';
 import DataTransfromChart from '@/src/utils/models/DataTransfromChart';
 import React, { useEffect, useState } from 'react'
-import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
 import style from './RadarChartBoard.module.css'
 import { RadarChartType } from '@/src/utils/models/Types';
 import { ChartsBoardProps } from '@/src/utils/models/Types';

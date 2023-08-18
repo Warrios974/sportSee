@@ -4,3 +4,34 @@
 .container{
     
 }
+
+.btn{
+    z-index: 1;
+    position: relative;
+    display: block;
+    background-color: #E60000;
+    padding: 1rem 2rem;
+    color: white;
+    margin-top: 1rem;
+    border-radius: 1rem;
+    text-align: center;
+    opacity: 1;
+    overflow: hidden ;
+}
+
+.btn__bg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    opacity: 0;
+    z-index: -1;
+    background-color: #a20000;
+    transition: opacity 250ms linear;
+}
+
+
+.btn:hover .btn__bg{
+    opacity: 1;
+}

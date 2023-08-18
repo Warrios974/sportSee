@@ -17,10 +17,12 @@ export default function Home() {
         {
           users.map((user) => (
             <Link 
+              className={style.btn}
               href={`/boards/${user.id}`}
               key={user.id}
               >
               {user.userInfos.firstName}
+              <div className={style.btn__bg}></div>
             </Link>
           ))
         }

@@ -23,6 +23,15 @@ export type LayoutBoardProps = PropsWithChildren<{
   params: { boardid: string, }
 }>
 
+export type singleValueContainerProps = {
+    urlImage: string,
+    type: string,
+    unity: string,
+    number: number,
+    color: string
+}
+
+
 /*Utils Charts Data Types */
 
 export type UserDataReceiveFromFetch = { 

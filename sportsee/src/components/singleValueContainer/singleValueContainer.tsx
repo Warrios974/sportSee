@@ -1,14 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 import style from './SingleValueContainer.module.css'
-
-type singleValueContainerProps = {
-    urlImage: string,
-    type: string,
-    unity: string,
-    number: number,
-    color: string
-}
+import { singleValueContainerProps } from '@/src/utils/models/Types'
 
 export default function SingleValueContainer({ urlImage, type, unity, number, color } : singleValueContainerProps) {
   

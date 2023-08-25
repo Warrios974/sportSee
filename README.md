@@ -25,7 +25,7 @@ Pour utiliser ce projet, vous aurez besoin de cette API. Quand l'API est install
 
 ```bash
 next
-app
+app                                            // Emplacement des page et des routes
 │   error.tsx
 │   favicon.ico
 │   globals.css
@@ -35,16 +35,16 @@ app
 │   page.tsx
 │
 └───boards
-    └───[boardid]
+    └───[boardid]                              // Page qui affiche le tableaud de bord selon l'ID de l'utilisateur
             error.tsx
             layout.tsx
             page.module.css
-            page.tsx
+            page.tsx                           ///////////////////////////////////////
 node_modules
 public
 src
 ├───api
-│       api.tsx
+│       api.tsx                                // Réalisation des fetch
 │
 ├───assets
 │       halteres.svg
@@ -53,7 +53,7 @@ src
 │       relaxation.svg
 │       velo.svg
 │
-├───components
+├───components                                // Les composants réutilisable
 │   ├───banner
 │   │       Banner.module.css
 │   │       Banner.tsx
@@ -92,14 +92,14 @@ src
 │   │
 │   └───singleValueContainer
 │           SingleValueContainer.module.css
-│           SingleValueContainer.tsx
+│           SingleValueContainer.tsx            ///////////////////////////////
 │
 ├───data
-│       data.tsx
+│       data.tsx                               // Données mocked
 │
 └───utils
     ├───models
-    │       DataTransfromChart.tsx
+    │       DataTransfromChart.tsx             // Class de tranformation des données qui viennent de l'API
     │       Types.tsx
     │
     └───style

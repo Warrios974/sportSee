@@ -21,5 +21,102 @@ Pour utiliser ce projet, vous aurez besoin de cette API. Quand l'API est install
 - Lancez la commande `npm install` dans votre terminal, pour installer toutes les dépendances.
 - Puis `npm run dev` pour lancer le projet.
 
+## Organisation du code
+
+```bash
+next
+app
+│   error.tsx
+│   favicon.ico
+│   globals.css
+│   layout.module.css
+│   layout.tsx
+│   page.module.css
+│   page.tsx
+│
+└───boards
+    └───[boardid]
+            error.tsx
+            layout.tsx
+            page.module.css
+            page.tsx
+node_modules
+public
+src
+├───api
+│       api.tsx
+│
+├───assets
+│       halteres.svg
+│       logo.svg
+│       nage.svg
+│       relaxation.svg
+│       velo.svg
+│
+├───components
+│   ├───banner
+│   │       Banner.module.css
+│   │       Banner.tsx
+│   │
+│   ├───barChart
+│   │       BarChartBoard.module.css
+│   │       BarChartBoard.tsx
+│   │
+│   ├───header
+│   │       header.module.css
+│   │       Header.tsx
+│   │
+│   ├───lineChart
+│   │       LineChartBoard.module.css
+│   │       LineChartBoard.tsx
+│   │
+│   ├───menu
+│   │       Menu.module.css
+│   │       Menu.tsx
+│   │
+│   ├───navbar
+│   │       navbar.module.css
+│   │       Navbar.tsx
+│   │
+│   ├───radarChart
+│   │       RadarChartBoard.module.css
+│   │       RadarChartBoard.tsx
+│   │
+│   ├───radialChart
+│   │       RadialChartBoard.module.css
+│   │       RadialChartBoard.tsx
+│   │
+│   ├───sidebar
+│   │       sidebar.module.css
+│   │       Sidebar.tsx
+│   │
+│   └───singleValueContainer
+│           SingleValueContainer.module.css
+│           SingleValueContainer.tsx
+│
+├───data
+│       data.tsx
+│
+└───utils
+    ├───models
+    │       DataTransfromChart.tsx
+    │       Types.tsx
+    │
+    └───style
+            colors.module.css
+            sizesFont.module.css
+.eslintrc.json
+.gitignore
+next-env.d.ts
+next.config.js
+package-lock.json
+package.json
+postcss.config.js
+README.md
+tailwind.config.js
+tsconfig.json
+tsconfig.tsbuildinfo
+```
+
 ## Autres informations
 Si vous voulez switcher entre les données mockés et les données de l'API dans le fichier **sportsee/src/api/api.tsx**, changer la valeur de la variable useMockedData en false/true.

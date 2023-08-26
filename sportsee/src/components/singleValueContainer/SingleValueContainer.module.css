@@ -13,8 +13,9 @@
     background-color: color--box;
     border-radius: .5rem;
 
-    @media only screen and (max-width: 1000px) {
+    @media only screen and (max-width: 1080px) {
         flex-wrap: wrap;
+        height: auto;
     }
 }
 
@@ -49,7 +50,7 @@
 
 .imageContainer{
     
-    @media only screen and (max-width: 1000px) {
+    @media only screen and (max-width: 1080px) {
         width: 100%;
     }
 }
@@ -61,7 +62,7 @@
 .descriptionContainer{
     padding-left: 1rem;
 
-    @media only screen and (max-width: 1000px) {
+    @media only screen and (max-width: 1080px) {
         width: 100%;
         text-align: center;
         padding-left: 0;

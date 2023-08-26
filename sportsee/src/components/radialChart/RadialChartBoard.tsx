@@ -32,6 +32,7 @@ export default function RadialChartBoard(props :ChartsBoardProps) {
       
     return (
       <div className={style.radialChartBoardContainer}>
+        <span className={style.lengend}>Score</span>
         <ResponsiveContainer width="99%" height="100%" aspect={0.972}>
           <RadialBarChart
             innerRadius="69%"
@@ -41,6 +42,9 @@ export default function RadialChartBoard(props :ChartsBoardProps) {
             data={chartData}
             startAngle={90}
             endAngle={450}
+            margin={{
+              top: 10
+            }}
           >
             <PolarAngleAxis type="number" domain={[0, 100]} angleAxisId={0} tick={false}/>
             <PolarRadiusAxis tick={false} tickLine={false} hide={true} fill="" stroke="">
@@ -79,7 +83,6 @@ export default function RadialChartBoard(props :ChartsBoardProps) {
               dataKey="uv"
               cornerRadius="50%"
             />
-            <Legend width={200} content={<text>Score</text>} wrapperStyle={{top: "0rem", left: "2rem", lineHeight: "20px", width: "150px",fontWeight: "bold"}}/>
           </RadialBarChart>
         </ResponsiveContainer>
       </div>

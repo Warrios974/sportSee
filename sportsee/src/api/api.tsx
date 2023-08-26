@@ -2,7 +2,7 @@ import { USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_MAIN_DATA, USER_PERFORMANCE 
 
 export const urlAPI = 'http://localhost:3000/user/'
 
-const useMockedData = false
+const useMockedData = true
 
 export const getUserActivity = async (userID : number) => {
      

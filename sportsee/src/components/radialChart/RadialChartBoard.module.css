@@ -2,9 +2,26 @@
 @value color--box from colors;
 
 .radialChartBoardContainer{
+    position: relative;
     width: 33%;
     border-radius: .5rem;
     background-color: color--box;
     height: 17rem;
     padding-top: 2rem;
+}
+
+.lengend{
+    position: absolute;
+    top: 1.5rem;
+    left: 2rem;
+    font-weight: bold;
+}
+
+
+
+@media only screen and (max-width: 1080px) {
+
+    .radialChartBoardContainer{
+        padding-top: 0;
+    }
 }
